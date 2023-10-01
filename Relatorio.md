@@ -226,9 +226,9 @@ Nesta etapa, criamos e configuramos o dataset 'pbrandao_mvp_futebol', que recebe
 
 Conforme apresentado no fluxograma, toda a etapa de ETL foi realizada dentro do ambiente GCP, por meio do próprio editor de código do Google Cloud Shell. Foram elaborados cinco scripts em Python, um para cada tabela. Estes scripts extraíram os dados brutos do bucket, realizaram transformações e tratamentos específicos para cada tabela e, finalmente, carregaram os dados no BigQuery.
 
-Esta etapa foi uma das mais delicadas do projeto. Ao final deste relatório, na seção de autoavaliação, abordarei algumas das dificuldades encontradas nesta fase, bem como as razões para não ter adotado uma ferramenta específica de ETL.
+Esta etapa foi uma das mais delicadas do projeto. Ao final deste relatório, na [seção 6 - Autoavaliação](#6--autoavaliação), abordarei algumas das dificuldades encontradas nesta fase, bem como as razões para não ter adotado uma ferramenta específica de ETL.
 
-Foi criada uma pasta específica para armazenamento dos scripts mencionados. Inicialmente ela foi criada com o nome "dataflow_projects" pois ela serviria para armazenar os arquivos Python que seriam executados pelo job do Dataflow, o que não ocorreu devido a alguns problemas que surgiram ao utilizar a ferramenta, também abordados na seção de autoavaliação.
+Foi criada uma pasta específica para armazenamento dos scripts mencionados. Inicialmente ela foi criada com o nome "dataflow_projects" pois ela serviria para armazenar os arquivos Python que seriam executados pelo job do Dataflow, o que não ocorreu devido a alguns problemas que surgiram ao utilizar a ferramenta, também abordados na [seção 6 - Autoavaliação](#6--autoavaliação).
 
 ![etl_scripts_gcp](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/3dd4b217-09af-4925-b1c3-141a4eae3756)
 
@@ -788,11 +788,11 @@ Depois de termos os perfis de dados estabelecidos, a análise se torna bastante 
 
 ![visu_perfil_dados_bigquery](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/06689ee3-a747-4ffc-be61-a16178ecb0f2)
 
-# 5- Análises e gráficos:
+# 5- Análises, gráficos e conclusões:
 
 Com nossas tabelas carregadas no BigQuery, chegou a hora de realizar as consultas que tentarão responder as perguntas levantadas no inicio do relatório e cumprir o nosso objetivo definido.
 
-Todo o roteiro de análise e geração de gráficos foi relizado no Google Collab. Depois de criar as queries e executa-lás no BigQuery, elas foram salvas e exportadas individualmente para um notebook no Google Collab.
+Todo o roteiro de análise e geração de gráficos foi relizado no Google Collab, bem como as devidas conclusões tiradas diante dos dados. Depois de criar as queries e executa-lás no BigQuery, elas foram salvas e exportadas individualmente para um notebook no Google Collab.
 
 A imagem abaixo mostra as queries que foram salvas no BigQuery, assim como o roteiro necessário para exportá-la para o Google Collab. 
 
