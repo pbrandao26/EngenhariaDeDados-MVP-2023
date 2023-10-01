@@ -810,7 +810,7 @@ Quanto aos desafios enfrentados, admito que esta foi minha primeira incursão em
 
 ## 6.1- Tentativa 1 - GCP:
 
-A primeira plataforma de cloud que tentei usar neste projeto foi justamente a própria Google Cloud Plataform, onde consegui executar perfeitamente os passos [4.1](#4.1--Projeto), [4.2](#4.2--Bucket) e [4.3](#4.3--Criação-do-Dataset-no-BigQuery).
+A primeira plataforma de cloud que tentei usar neste projeto foi justamente a própria Google Cloud Plataform, onde consegui executar perfeitamente os passos [4.1](##4.1--Projeto), [4.2](##4.2--Bucket) e [4.3](##4.3--Criação-do-Dataset-no-BigQuery).
 
 Optei por realizar a etapa de ELT por meio da API do Google Cloud DataFusion. No entanto, apesar de ter conseguido efetuar transformações como renomear colunas, criar novos campos, filtrar dados, excluir informações, entre outras, enfrentei dificuldades com a execução dos meus jobs, especialmente quando envolvia cláusulas ```.join```, que sempre resultavam em falhas.
 
@@ -846,7 +846,7 @@ Essas dificuldades, somadas ao prazo apertado para a entrega do projeto, me leva
 
 ## 6.3- Tentativa 3 - GCP:
 
-O Google Cloud Dataflow foi a última ferramenta de ETL que busquei antes de me estabelecer na solução final descrita neste trabalho. Depois de seguir com sucesso as etapas detalhadas em [4.1](#4.1--Projeto), [4.2](#4.2--Bucket) e [4.3](#4.3--Criação-do-Dataset-no-BigQuery), enfrentei desafios ao tentar criar e executar meus jobs no Dataflow.
+O Google Cloud Dataflow foi a última ferramenta de ETL que busquei antes de me estabelecer na solução final descrita neste trabalho. Depois de seguir com sucesso as etapas detalhadas em [4.1](##4.1--Projeto), [4.2](##4.2--Bucket) e [4.3](##4.3--Criação-do-Dataset-no-BigQuery), enfrentei desafios ao tentar criar e executar meus jobs no Dataflow.
 
 O cerne do problema estava na integração entre o Apache Beam e o Dataflow ao traduzir e executar meu código Python. Aparentemente, o Apache Beam/Dataflow suporta as versões '3.6', '3.7' e '3.8' de Python, mas eu estava utilizando a versão '3.9.2'. Esse detalhe, que pode parecer pequeno, tornou-se um grande empecilho, pois não consegui de maneira alguma fazer o downgrade da versão do Python para se adequar ao que o Dataflow exigia, como pode ser constatado através dos prints abaixo:
 
