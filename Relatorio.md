@@ -804,7 +804,7 @@ Para verificar toda a seção de análises e geração de gráficos, bem como as
 
 # 6- Autoavaliação:
 
-Nesta seção de autoavaliação, abordaremos as dificuldades encontradas e as justificativas para as estratégias de remediação adotadas ao longo do desenvolvimento do MVP. As reflexões sobre o cumprimento dos objetivos, as respostas às perguntas propostas no início do projeto e às questões emergentes, bem como as considerações sobre futuros aprimoramentos, estão detalhadas no [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb) na seção final.
+Nesta seção de autoavaliação, abordaremos as dificuldades encontradas e as justificativas para as estratégias de remediação adotadas ao longo do desenvolvimento do MVP. As reflexões sobre o cumprimento dos objetivos, as respostas às perguntas propostas no início do projeto e às questões emergentes, bem como as considerações sobre futuros aprimoramentos, estão detalhadas na parte final do [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb).
 
 Quanto aos desafios enfrentados, admito que esta foi minha primeira incursão em uma plataforma de nuvem, revelando-se um desafio considerável e com uma curva de aprendizado acentuada.
 
