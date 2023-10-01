@@ -804,4 +804,59 @@ Para verificar toda a seção de análises e geração de gráficos, bem como as
 
 # 6- Autoavaliação:
 
-Falar das tentativas com outras nuvens, dificuldades e bla bla bla
+Nesta seção de autoavaliação, abordaremos as dificuldades encontradas e as justificativas para as estratégias de remediação adotadas ao longo do desenvolvimento do MVP. As reflexões sobre o cumprimento dos objetivos, as respostas às perguntas propostas no início do projeto e às questões emergentes, bem como as considerações sobre futuros aprimoramentos, estão detalhadas no [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb) na seção final.
+
+Quanto aos desafios enfrentados, admito que esta foi minha primeira incursão em uma plataforma de nuvem, revelando-se um desafio considerável e com uma curva de aprendizado acentuada.
+
+## 6.1- Tentativa 1 - GCP:
+
+A primeira plataforma de cloud que tentei usar neste projeto foi justamente a própria Google Cloud Plataform, onde consegui executar perfeitamente os passos [4.1](4.1--Projeto), [4.2](4.2--Bucket) e [4.3](#4.3--Criação-do-Dataset-no-BigQuery).
+
+Optei por realizar a etapa de ELT por meio da API do Google Cloud DataFusion. No entanto, apesar de ter conseguido efetuar transformações como renomear colunas, criar novos campos, filtrar dados, excluir informações, entre outras, enfrentei dificuldades com a execução dos meus jobs, especialmente quando envolvia cláusulas ```.join```, que sempre resultavam em falhas.
+
+## 6.2- Tentativa 2 - AWS:
+
+Diante das dificuldades enfrentadas na GCP, decidi migrar o projeto para a AWS. No entanto, na nova plataforma, também enfrentei obstáculos, em particular, não consegui avançar na etapa de ETL usando o AWS Glue devido a problemas de permissões.
+
+O processo de execução do projeto na AWS seguiu a mesma estrutura idealizada para a GCP: criação do projeto, configuração do bucket, instalação do banco de dados e, por fim, o ETL.
+
+As etapas iniciais foram concluídas sem problemas:
+
+* Estabelecimento do Bucket no S3 contendo as respectivas pastas:
+
+![1  Pastas no S3](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/3bc5c6b6-dfdd-4405-b836-a3472ccc6999)
+
+* Configuração do Banco de Dados:
+
+![6  Criar database](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/72393de8-5f9b-4f4e-955f-9a6db1c8fc46)
+
+* Esquema do job no AWS Glue:
+  
+![ETL - dimjogador](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/57f9098c-14a4-4ec5-b874-f464ce360376)
+
+No entanto, a maior barreira foi a gestão de permissões no AWS Glue. Apesar de ter configurado um IAM Role com permissões de administrador, os jobs sempre retornavam erros:
+
+![Permission denied](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/4c04ae41-f50a-4138-b1ba-23a43c2f6a17)
+
+Estranhamente, ao simular a operação, nenhum erro era indicado:
+
+![simul error](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/fc81b5f5-722e-49f6-9b86-004e56f94ab9)
+
+Essas dificuldades, somadas ao prazo apertado para a entrega do projeto, me levaram a retornar à Google Cloud Platform com a intenção de explorar o Dataflow como ferramenta de ETL.
+
+## 6.3- Tentativa 3 - GCP:
+
+O Google Cloud Dataflow foi a última ferramenta de ETL que busquei antes de me estabelecer na solução final descrita neste trabalho. Depois de seguir com sucesso as etapas detalhadas em [4.1](4.1--Projeto), [4.2](4.2--Bucket) e [4.3](#4.3--Criação-do-Dataset-no-BigQuery), enfrentei desafios ao tentar criar e executar meus jobs no Dataflow.
+
+O cerne do problema estava na integração entre o Apache Beam e o Dataflow ao traduzir e executar meu código Python. Aparentemente, o Apache Beam/Dataflow suporta as versões '3.6', '3.7' e '3.8' de Python, mas eu estava utilizando a versão '3.9.2'. Esse detalhe, que pode parecer pequeno, tornou-se um grande empecilho, pois não consegui de maneira alguma fazer o downgrade da versão do Python para se adequar ao que o Dataflow exigia, como pode ser constatado através dos prints abaixo:
+
+* Erros ao executar o job:
+![Dataflow sem python](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/a4a15ebb-dea4-4cc7-b884-5f31ae7ab277)
+
+* Erro com a versão do Python:
+  
+![Dataflow sem versao python](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/d278a93e-54ca-4409-b00d-581603b007c8)
+
+Essa barreira me levou a buscar a alternativa abordada nestre trabalho, buscando realizar todo o fluxo de ETL diretamente pelo editor de código do Google Cloud Shell, sem intermediação de uma ferramenta pronta. 
+
+
