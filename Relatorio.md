@@ -1,4 +1,4 @@
-# 1- Introdução
+![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/7abb8d7c-7320-4ef3-ad42-27f4ee0f6ddc)# 1- Introdução
 
 O presente trabalho é um MVP que tem como tema central o mercado de transferência das cinco principais ligas de futebol europeu: Premier League (Inglaterra), La Liga (Espanha), Serie A TIM (Itália), Ligue 1 (França) e Bundesliga (Alemanha).
 
@@ -784,4 +784,12 @@ Depois de ter os perfis de dados estabelecidos, a análise se torna bastante dir
 
 Agora que temos nossas tabelas carregas no BigQuery, chegou a hora de realizar as consultas que tentarão responder as perguntas levantadas no inicio do relatório e cumprir o nosso objetivo definido.
 
-Foram realizadas quatro consultas principais que levaram 
+Todo o roteiro de análise e geração de gráficos foi relizado no Google Collab. Depois de criar as queries e executa-lás no BigQuery, elas foram salvas e exportadas individualmente para um notebook no Google Collab.
+
+A imagem abaixo mostra as queries que foram salvas no BigQuery, assim como o roteiro necessário para exportá-la para o google collab. 
+
+![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/1315de89-33b4-4710-a951-007bc29e1d86)
+
+Para verificar toda a seção de análises e geração de gráficos, bem como as respostas das perguntas levantas e a conclusão sobre o cumprimento do objetivo, consulte o notebook exportado para o GitHub clicando no nome da seção [Análises_e_Gráficos](5_1-analises-e-graficos.ipynb).
+
+## 5.1- [Análises_e_Gráficos](5_1-analises-e-graficos.ipynb)
