@@ -859,4 +859,12 @@ O cerne do problema estava na integração entre o Apache Beam e o Dataflow ao t
 
 Essa barreira me levou a buscar a alternativa abordada nestre trabalho, buscando realizar todo o fluxo de ETL diretamente pelo editor de código do Google Cloud Shell, sem intermediação de uma ferramenta pronta. 
 
+## Considerações gerais:
 
+O desenvolvimento desse MVP foi, sem sombra de dúvidas, um processo trabalhoso e árduo. As dificuldades não se limitaram apenas às plataformas de nuvem, com as quais nunca havia tido experiência anteriormente, mas também se estenderam às outras etapas como a seleção e busca pelas fontes de dados, definição do problema, formulação das perguntas, webscraping dos dados, e, por fim, às análises e conclusões extraídas dos dados. Contudo, a realização desse MVP tornou-se uma experiência extremamente rica e divertida para mim.
+
+Percebo que ainda tenho um longo caminho a trilhar no que se refere às plataformas de nuvem. Embora meu desejo inicial fosse criar um pipeline utilizando uma ferramenta pronta de ETL, realizar o ETL por meio do editor e da CLI do Cloud Shell também representou um grande desafio. A tarefa de tratar bases de dados e, sobretudo, conciliar informações de diferentes fontes, foi sem dúvida uma das maiores dificuldades deste projeto. 
+
+Diante de todos os desafios e aprendizados compartilhados neste relatório, e considerando principalmente as análises e conclusões apresentadas, não posso deixar de expressar minha satisfação como autor deste MVP. Como mencionei anteriormente, vejo diversas oportunidades de melhoria e acredito que, ao serem exploradas, irão agregar ainda mais valor às análises.
+
+Por fim, fica a satisfação com o trabalho concluído e o agradecimento aos professores por terem me orientado a criar um projeto o qual pude usar como tema uma das minhas maiores paixões, o futebol.
