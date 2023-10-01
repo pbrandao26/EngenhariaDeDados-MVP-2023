@@ -1,4 +1,4 @@
-![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/7abb8d7c-7320-4ef3-ad42-27f4ee0f6ddc)# 1- Introdução
+# 1- Introdução
 
 O presente trabalho é um MVP que tem como tema central o mercado de transferência das cinco principais ligas de futebol europeu: Premier League (Inglaterra), La Liga (Espanha), Serie A TIM (Itália), Ligue 1 (França) e Bundesliga (Alemanha).
 
