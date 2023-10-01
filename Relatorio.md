@@ -2,14 +2,14 @@
 
 O presente trabalho é um MVP que tem como tema central o mercado de transferência das cinco principais ligas de futebol europeu: Premier League (Inglaterra), La Liga (Espanha), Serie A TIM (Itália), Ligue 1 (França) e Bundesliga (Alemanha).
 
-O desafio principal do projeto era criar um pipeline de dados utilizando tecnologia em nuvem, passando pelas etapas de busca, coleta, modelagem, carga e análise dos dados.
+O desafio principal do projeto foi criar um pipeline de dados utilizando tecnologia em nuvem, passando pelas etapas de busca, coleta, modelagem, carga e análise dos dados.
 
-O processo de escolha da nuvem de ocorreu iterativamente, passando por cada uma das plataformas, encontrando dificuldades e afinidades, que serão posteriormente descritas aqui, e assistindo as aulas onde os professores mostravam o funcionamento de cada nuvem. Por fim, o trabalho foi realizado na Google Cloud Plataform. 
+O processo de escolha da nuvem de ocorreu iterativamente, passando por cada uma das plataformas, encontrando dificuldades e afinidades, que serão posteriormente descritas no presente MVP, e assistindo as aulas onde os professores mostravam o funcionamento de cada nuvem. Por fim, o trabalho foi realizado na Google Cloud Plataform. 
 
 Todos os requisitos e objetivos propostos foram cumpridos e serão exibidos e explicados passo a passo neste documento. 
 
 ## 1.1-  Objetivo e Perguntas
-O objetivo do trabalho foi explorar e analisar a relação entre diversas características dos jogadores e dos jogos (tais como idade, liga, temporada, gols, assistências, entre outros) com os valores de transferência associados a cada jogador. Ao longo do projeto, embora tenhamos começado com algumas perguntas-chave, novos questionamentos e insights surgiram.
+O objetivo deste trabalho foi explorar e analisar a relação entre diversas características dos jogadores e dos jogos (tais como idade, liga, temporada, gols, assistências, entre outros) com os valores de transferência associados a cada jogador. Ao longo do projeto, embora tenhamos começado com algumas perguntas-chave, novos questionamentos e insights surgiram.
 
 * **Perguntas Iniciais**:
 
@@ -29,7 +29,7 @@ A fim de atender o objetivo do trabalho e responder às perguntas levantadas, fo
 
 * **Base de dados do mercado de transferências** ([www.transfermkt.com](https://www.transfermarkt.com.br/)): 
 
-Através do site transfermkt, coletamos os dados de todas as transferências (entradas e saídas) de todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Através dessa base de dados, foi possível obter dados descritivos de fluxo de entrada e saída de jogadores das ligas e dos clubes, e também os valores de cada transferência.
+Através do site transfermkt, coletamos os dados de todas as transferências (entradas e saídas) de todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Por meio dessa base de dados, foi possível obter dados descritivos de fluxo de entrada e saída de jogadores das ligas e dos clubes, e também os valores de cada transferência.
 
 ![transfermkt](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/1a84c6ab-e3a8-4245-8ff5-4c7054f19477)
 
@@ -43,21 +43,21 @@ No site fbref, coletamos todas as principais estatísticas de desempenho dos jog
 
 ## 2.1 - Coleta dos dados:
 
-Como as bases de dados escolhidas não possuem APIs para obtenção automática, foi necessário criar um robô de scraping para realizar a raspagem de dados das webpages. Foram construídos dois scripts de Python, um para cada base de dados, usando majoritariamente as bibliotecas pandas, bs4 e selenium, para se obter os dados em formato tabular.
+Como as bases de dados escolhidas não possuem APIs para obtenção automática, foi necessário criar um robô de scraping para realizar a raspagem de dados das webpages. Foram construídos dois scripts de Python, um para cada base de dados, usando majoritariamente as bibliotecas pandas, bs4 e selenium, para que sejam obtidos os dados em formato tabular.
 
 Os scripts foram construídos em um ambiente local, na minha própria máquina, e encontram-se disponíveis no diretório [WebScraping](WebScraping) aqui neste repositório. 
 
-* A imagem a seguir, exemplifica o processo para o caso de obtenção dos dados de transferência:
+* A imagem a seguir, exemplifica o processo para a obtenção dos dados de transferência:
 
 ![MVP PYTHON_extraindo players](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/433ebc05-71dc-49ca-878a-e7f894a5efb9)
 
 É possível observar que os dados de alguns anos para algumas ligas não puderam ser obtidos devido a falhas de compreensão da estrutura da webpage transfermkt, entretanto foram poucos os casos em que este incidente ocorreu e estão exibidos na imagem.
 
-* A imagem a seguir, exemplifica o processo para o caso de obtenção dos dados de performance dos jogadores:
+* A imagem a seguir, exemplifica o processo para a obtenção dos dados de performance dos jogadores:
 
 ![MVP PYTHON](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/fa9a9c0b-5b97-4fff-a230-b3abf62caf1d)
 
-Não foram encontrados erros no processo de obtenção e coleta dos dados. Entranto, o site fbref só passou a fornecer algumas estatisticas avançadas, como gols esperados, assistências esperadas, passes de progressão, jogadas de progressão, entre outras, a partir de 2017, então os dados coletados entre 1999 e 2017 não apresentam estas estatisticas.
+Não foram encontrados erros no processo de obtenção e coleta dos dados. Entranto, o site fbref só passou a fornecer algumas estatisticas avançadas, como gols esperados, assistências esperadas, passes de progressão, jogadas de progressão, entre outras, a partir de 2017, então os dados coletados entre 1999 e 2017 não apresentam estas estatísticas.
 
 Os dados foram armazenados em um arquivo .xslx e posteriormente convertidos para .tsv, também através de um script em Python que se encontra no mesmo diretório dos outros dois mencionados.
 
@@ -70,15 +70,15 @@ Os scripts também fazem alguns tratamentos preliminares que serviram como pré-
 Por fim, é importante mencionar que os arquivos .tsv citados também se encontram na pasta [WebScraping](WebScraping).
 
 # 3- Modelagem:
-A modelagem escolhida para atender o objetivo em questão e responder às perguntas foi a modelagem estrela. Busquei criar uma estrutura com 3 tabelas de dimensão, sendo elas: dimensão jogador, dimensão liga/ano e dimensão time, e duas tabelas fato, tabela fato transferencias e tabela fato desempenho. 
+A modelagem escolhida para atender o objetivo em questão e responder às perguntas foi a modelagem estrela. Buscamos criar uma estrutura com 3 tabelas de dimensão, sendo elas: (i) dimensão jogador, (ii) dimensão liga/ano e (iii) dimensão time, e duas tabelas fato: (i) tabela fato transferencias e (ii) tabela fato desempenho. 
 
-A opção por essa modelagem é devida ao fato de que a modelagem estrela é especialmente eficaz para lidar com sistemas de suporte à decisão e análises complexas, como as que estavam previstas para este projeto. No contexto do projeto, ao analisar transferências e desempenhos de jogadores, era fundamental ter uma estrutura que permitisse cruzar facilmente diferentes dimensões, como jogadores, ligas e times, com as métricas quantitativas de performance e transferências.
+A opção por essa modelagem é preferível, pois a modelagem estrela é especialmente eficaz para lidar com sistemas de suporte à decisão e análises complexas, como as que estavam previstas para este projeto. No contexto do MVP, ao analisar transferências e desempenhos de jogadores, foi fundamental ter uma estrutura que permitisse cruzar facilmente diferentes dimensões, tais como jogadores, ligas e times, com as métricas quantitativas de performance e transferências.
 
 Sendo assim, o modelo final atendeu ao seguinte formato:
 
 ![mermaid-diagram-2023-09-29-045403](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/b9b11319-7e92-46c8-91c1-6f0e32366483)
 
-É importante frisar que os sufixos _PK e _FK não fazem parte dos identificadores destas colunas, são apenas indicadores ilustrativos que coloquei para identificar quais as chaves primárias e estrangeiras das relações.
+É importante frisar que os sufixos _PK e _FK não fazem parte dos identificadores destas colunas, são apenas indicadores ilustrativos que incluímos para identificar quais as chaves primárias e estrangeiras das relações.
 
 Toda parte de catalogação e perfil dos dados foi realizada através da ferramenta Google Cloud Dataplex. Este processo será melhor explicado mais a frente.
 
@@ -92,7 +92,7 @@ De maneira geral, os dados foram descritos da seguinte forma:
 
   Nacionalidade: País de origem do jogador.
 
-  Pos: Posição em que o jogador atua no campo (por exemplo, atacante, meia, zagueiro, etc.).
+  Pos: Posição em que o jogador atua no campo (por exemplo, atacante, meia, zagueiro etc.).
 
   Nascimento: Ano de nascimento do jogador.
 
@@ -132,7 +132,7 @@ De maneira geral, os dados foram descritos da seguinte forma:
   
   Quantia_Paga_ou_Recebida: Quantia paga ou recebida na transferência.
   
-  Tipo_de_transferencia: Indica o tipo de transferência (por exemplo, entrada, saída).
+  Tipo_de_transferencia: Indica o tipo de transferência (entrada ou saída).
   
   Contrato: Aquisição (compra) ou empréstimo do jogador.
 
@@ -141,7 +141,7 @@ De maneira geral, os dados foram descritos da seguinte forma:
   ID_Desempenho (Chave Primária): Um identificador único para cada registro de desempenho.
   
   ID_Jogador (Chave Estrangeira): Referência ao jogador associado a este desempenho.
-  Ela se relaciona com a chavr primária de dim_jogador
+  Ela se relaciona com a chave primária de dim_jogador
   
   ID_Time (Chave Estrangeira): Identificador do time ao qual o jogador pertence durante este período de desempenho.
   Ela se relaciona com a chave primária de dim_time
@@ -165,7 +165,7 @@ De maneira geral, os dados foram descritos da seguinte forma:
   
   Gols_e_assistencias: Combinação do total de gols e assistências do jogador.
   
-  Gols_sem_penaltis: Número de gols marcados pelo jogador excluindo gols de pênalti.
+  Gols_sem_penaltis: Número de gols marcados pelo jogador, excluindo gols de pênalti.
   
   Gols_de_penaltis: Total de gols que o jogador marcou a partir de cobranças de pênalti.
   
@@ -187,7 +187,9 @@ De maneira geral, os dados foram descritos da seguinte forma:
 
 # 4- Processos na Google Cloud Plataform:
 
-Como mencionado no início do relatório, a plataforma de nuvem escolhida foi a Google Cloud Platform. Nela, realizamos todas as etapas de ETL do projeto. O fluxograma abaixo mostra, de maneira resumida, todo o pipeline desenvolvido.
+Como mencionado no início do relatório, a plataforma de nuvem escolhida foi a Google Cloud Plataform. Nela, realizamos todas as etapas de ETL do projeto. 
+
+O fluxograma abaixo mostra, de maneira resumida, todo o pipeline desenvolvido.
 
 ![ETL drawio](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/b5ae030a-6627-40c9-9790-f9a9bba28e4f)
 
@@ -198,13 +200,19 @@ O primeiro passo para iniciar o projeto no GCP foi justamente criar o projeto. N
 
 ## 4.2- Bucket:
 
-Inicialmente, criamos um bucket multi-regional no Cloud Storage chamado 'pbrandao-transfer-data'. Dentro dele, foram criadas duas pastas, uma para cada arquivo de dados .tsv. O arquivo 'Allplayers_stats.tsv', que representa os dados de performance dos jogadores, foi armazenado na pasta 'Players Data'. Já o arquivo 'transfer_data.tsv', que representa os dados de transferência dos jogadores, foi armazenado na pasta 'Transfer Data'. A imagem abaixo ilustra a organização do bucket:
+Inicialmente, criamos um bucket multi-regional no Cloud Storage chamado 'pbrandao-transfer-data'. Dentro dele, foram criadas duas pastas, uma para cada arquivo de dados .tsv. O arquivo 'Allplayers_stats.tsv', que representa os dados de performance dos jogadores, foi armazenado na pasta 'Players Data'. Já o arquivo 'transfer_data.tsv', que representa os dados de transferência dos jogadores, foi armazenado na pasta 'Transfer Data'. 
+
+A imagem abaixo ilustra a organização do bucket:
 
 ![bucket](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/d1ef3b93-cd89-4b78-8aa3-914c05c00e0e)
 
-As imagens abaixo mostra como estão organizados os dois arquivos em suas respectivas pastas dentro do bcuket:
+As imagens abaixo mostram como estão organizados os dois arquivos em suas respectivas pastas dentro do bucket:
+
+* Players Data:
 
 ![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/4f640966-c3ff-49a4-aaba-55a2a5fc0ded)
+
+* Transfer Data:
 
 ![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/2e62353a-7f35-4da0-8ef8-bf05187dbe03)
 
@@ -220,11 +228,11 @@ Conforme apresentado no fluxograma, toda a etapa de ETL foi realizada dentro do 
 
 Esta etapa foi uma das mais delicadas do projeto. Ao final deste relatório, na seção de autoavaliação, abordarei algumas das dificuldades encontradas nesta fase, bem como as razões para não ter adotado uma ferramenta específica de ETL.
 
-Foi criada uma pasta específica para armazenamento dos scripts mencionados. Inicialmente ela foi criada com o nome "dataflow_projects" pois ela serviria para armazenar os arquivos Python que seriam executados pelo job do Dataflow, o que não ocorreu por devido a alguns problemas que surgiram ao utilizar a ferramenta.
+Foi criada uma pasta específica para armazenamento dos scripts mencionados. Inicialmente ela foi criada com o nome "dataflow_projects" pois ela serviria para armazenar os arquivos Python que seriam executados pelo job do Dataflow, o que não ocorreu devido a alguns problemas que surgiram ao utilizar a ferramenta, também abordados na seção de autoavaliação.
 
 ![etl_scripts_gcp](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/3dd4b217-09af-4925-b1c3-141a4eae3756)
 
-A seguir, estão os scripts utilizados para a etapa de ETL realizada no editor de código do próprio Google CLoud Shell
+A seguir, estão os scripts utilizados para a etapa de ETL realizada no editor de código do próprio Google CLoud Shell.
 
 ### 4.4.1- dim_jogador:
 
@@ -292,15 +300,15 @@ job_config = bigquery.LoadJobConfig(schema=schema)
 job = client.load_table_from_dataframe(dim_jogador, full_table_id, job_config=job_config)
 job.result()  # Espera até a conclusão do job
 ```
-Dado que estamos lidando com duas bases de dados distintas e independentes, enfrentamos o desafio de normalização dos nomes dos jogadores. Em ambas as bases de dados, os nomes dos jogadores poderiam diferir devido a vários fatores, como a presença de acentos, uso de letras maiúsculas/minúsculas, e outras variações ortográficas. Para garantir uma integração precisa e não perder dados, foi crucial padronizar ou "normalizar" esses nomes.
+Tendo em vista que estamos lidando com duas bases de dados distintas e independentes, enfrentamos o desafio de normalização dos nomes dos jogadores. Em ambas as bases de dados, os nomes dos jogadores poderiam diferir devido a vários fatores, como a presença de acentos, uso de letras maiúsculas/minúsculas e outras variações ortográficas. Para garantir uma integração precisa e não perder dados, foi crucial padronizar ou "normalizar" esses nomes.
 
 A principal finalidade desta tabela é consolidar informações de jogadores que estão presentes em ambas as bases de dados. Utilizamos um método de junção (ou ```.join```) para combinar os dados. Contudo, antes de executar essa junção, normalizamos os nomes dos jogadores, assegurando que diferenças sutis na escrita não resultassem em perda de registros relevantes.
 
-Para cada jogador, atribuímos um ID único, resultando na coluna "ID_Jogador". Esta etapa é fundamental para garantir a integridade referencial e facilitar consultas futuras.
+Para cada jogador, atribuímos um ID único, resultando na coluna "ID_Jogador". Esta etapa é fundamental para garantir a integridade referencial e facilitar consultas.
 
 Para maior clareza e prevenção de possíveis erros, algumas colunas foram convertidas explicitamente para o tipo de dados string. Também optamos por renomear a coluna "Posição" para "Pos" para evitar possíveis complicações associadas a caracteres especiais no nome da coluna.
 
-Finalmente, preparamos a configuração para carregar os dados no BigQuery. Definimos o "project_id" e "dataset_id", e especificamos o "table_id" como "dim_jogador". Estabelecemos também um esquema para a tabela no BigQuery, garantindo que cada campo do DataFrame fosse mapeado corretamente para seu tipo de dado correspondente no BigQuery.
+Finalmente, preparamos a configuração para carregar os dados no BigQuery. Definimos o "project_id" e "dataset_id", bem como especificamos o "table_id" como "dim_jogador". Estabelecemos também um esquema para a tabela no BigQuery, garantindo que cada campo do DataFrame fosse mapeado corretamente para seu tipo de dado correspondente no BigQuery.
 
  ### 4.4.2- dim_time:
 
@@ -419,13 +427,13 @@ job = client.load_table_from_dataframe(dim_time, full_table_id, job_config=job_c
 job.result()  # Espera até a conclusão do jobb
  ```
 
-Dado que estamos lidando com duas bases de dados, uma complexidade adicional surge quando se trata de mapear nomes de times, já que estes podem ser representados de diferentes maneiras em diferentes fontes de dados.
+Tendo em vista que estamos lidando com duas bases de dados, uma complexidade adicional surge quando se trata de mapear nomes de times, já que estes podem ser representados de diferentes maneiras em diferentes fontes de dados.
 
 Para começar, definimos uma função de normalização, ```simple_normalize```, que transforma os nomes dos times para letras minúsculas e remove os acentos. Esta é uma etapa crucial para garantir que estamos comparando os nomes dos times de maneira consistente em ambas as bases de dados.
 
 Após a importação dos dados dos arquivos, aplicamos a função de normalização nos nomes dos times das colunas relevantes. Esta normalização básica serve como uma primeira tentativa de padronizar os nomes.
 
-No entanto, a simples normalização não é suficiente. Alguns clubes têm nomes que são representados de forma significativamente diferente nas duas bases de dados. Para resolver isso, criamos um mapeamento manual, ```manual_mapping```, que mapeia explicitamente certos nomes de equipes de uma representação para outra.
+No entanto, a simples normalização não é suficiente. Alguns clubes têm nomes que são representados de forma significativamente diferente nas duas bases de dados. Para resolver este problema, criamos um mapeamento manual, ```manual_mapping```, que mapeia explicitamente determinados nomes de equipes de uma representação para outra e que não puderam ser identificados de forma automática.
 
 A seguir, implementamos várias estratégias de mapeamento:
 
@@ -433,9 +441,9 @@ A seguir, implementamos várias estratégias de mapeamento:
   
 * Correspondência Parcial: Se um nome de equipe da primeira base de dados estiver contido em um nome de equipe da segunda base, nós o mapeamos.
   
-* Correspondência usando as Primeiras Palavras: Tentamos mapear com base nas primeiras palavras do nome da equipe.
+* Correspondência usando as Primeiras Palavras: Tentamos mapear com base nas primeiras palavras do nome da equipe em cada base de dados.
   
-* Correspondência usando a Última Palavra: Tentamos mapear com base na última palavra do nome da equipe.
+* Correspondência usando a Última Palavra: Tentamos mapear com base na última palavra do nome da equipe em cada base de dados.
 
 Após aplicar essas estratégias de mapeamento, criamos o DataFrame dim_time que contém os nomes dos times mapeados e um ID único para cada time.
 
@@ -487,11 +495,11 @@ job.result()  # Espera até a conclusão do job
 
 A tabela dim_liga_ano foi criada para consolidar informações sobre as diferentes ligas e anos presentes na base de dados. Esta tabela dimensiona uma combinação única de liga e ano, facilitando consultas futuras e otimizando análises que requerem essa granularidade.
 
-Para construir essa tabela, começamos carregando os dados do arquivo localizado no Google Cloud Storage, especificamente do caminho allplayers_stats_path. Uma vez carregados, extraímos as colunas 'Liga' e 'Ano' e removemos quaisquer duplicatas para garantir que cada combinação de liga e ano seja única.
+Para construir essa tabela, começamos carregando os dados do arquivo localizado no Google Cloud Storage, especificamente do caminho ```allplayers_stats_path```. Uma vez carregados, extraímos as colunas 'Liga' e 'Ano' e removemos quaisquer duplicatas para garantir que cada combinação de liga e ano seja única.
 
 O próximo passo envolveu a atribuição de um ID único para cada combinação de liga e ano, resultando na coluna "ID_LigaAno".
 
-Após a preparação e ordenação adequada das colunas, garantimos que não existissem valores nulos, pois a presença de tais valores poderia comprometer a integridade dos dados.
+Após a preparação e ordenação adequada das colunas, garantimos que não existissem valores nulos, pois a presença destes valores poderia comprometer a integridade dos dados.
 
 Finalmente, preparamos a configuração para carregar os dados no BigQuery. O "project_id" e "dataset_id" foram definidos, e o "table_id" foi especificado como "dim_liga_ano". O esquema para a tabela no BigQuery foi estabelecido, garantindo que cada campo do DataFrame fosse mapeado corretamente para seu tipo de dado correspondente no BigQuery. A tabela foi então carregada no BigQuery e confirmamos sua criação bem sucedida.
 
@@ -616,7 +624,7 @@ job = client.load_table_from_dataframe(transferencia, full_table_id, job_config=
 job.result()  # Espera até a conclusão do job
 ```
 
-A tabela fato_transferencias é uma das tebelas centrais do no nosso data warehouse, armazenando informações detalhadas sobre as transferências de jogadores. Iniciamos o processo aplicando uma função para normalizar os nomes dos jogadores e dos times. 
+A tabela fato_transferencias é uma das tabelas centrais do nosso data warehouse, armazenando informações detalhadas sobre as transferências de jogadores. Iniciamos o processo aplicando uma função para normalizar os nomes dos jogadores e dos times. 
 
 Para entender a natureza de cada transferência, implementamos a função ```determine_contract_type```, que categoriza a transação como "Aquisição" ou "Empréstimo" com base nos valores da coluna 'Quantia Paga'. Além disso, utilizamos a função ```extract_loan_value``` para isolar valores específicos associados a empréstimos.
 
@@ -696,7 +704,7 @@ desempenho['Min_para_participar'] = desempenho.apply(lambda row: row['Minutos_jo
 # Adicionando ID_Desempenho
 desempenho['ID_Desempenho'] = range(1, len(desempenho) + 1)
 
-# Limpar linhas com valores nulos para 'ID_Jogador':
+# Limpando linhas com valores nulos para 'ID_Jogador':
 desempenho = desempenho.dropna(subset=['ID_Jogador'])
 
 # Configuração da tabela no BigQuery
@@ -746,7 +754,7 @@ Uma vez que todos os dados são preparados e as transformações aplicadas, proc
 
 ### 4.4.6- Executando os scripts:
 
-Depois de definir todos os esquemas e relações, realizando todo tratamento adequado para cada tebela, foi necessário executar os scirpts para realizar a carga no BigQuery. Para isso, bastou especificar no terminal onde os arquivos estavam e referenciar o nome deles com 'python' antes do nome do arquivo. 
+Depois de definir todos os esquemas e relações, realizando todo tratamento adequado para cada tabela, foi necessário executar os scripts para realizar a carga no BigQuery. Para isso, bastou especificar, no terminal, o local onde os arquivos estavam, e referenciar o nome deles com 'python' antes do nome do arquivo. 
 
 Os prints abaixo mostram como foi realizada esta etapa.
 
@@ -770,27 +778,27 @@ Começamos estabelecendo descrições claras e precisas para os dados de cada ta
 
 ![categor_descri_dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/ad9db986-4bc1-4d15-b662-2f59905cad5d)
 
-Em seguida, demos um passo adiante ao criar verificações de perfil no Dataplex. A imagem a seguir mostra o processo de criação para a tabela fato_desempenho, mas é importante destacar que implementamos uma verificação individual para cada tabela do tipo fato:
+Em seguida, demos um passo adiante ao criar verificações de perfil no Dataplex. A imagem a seguir mostra o processo de criação de perfis de dados para a tabela fato_desempenho, sendo importante destacar que implementamos uma verificação individual para cada tabela do tipo fato:
 
 ![criar_perfil_dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/126cc99d-12fb-428a-bc19-135913aeda35)
 
 ![perfis criados no dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/b45fb05f-daa9-44e8-821b-f771609594d8)
 
-Depois de ter os perfis de dados estabelecidos, a análise se torna bastante direta. Basta acessar a tabela específica e navegar até a aba de perfil de dados para obter insights detalhados sobre a distribuição, qualidade e outras métricas relevantes dos dados.
+Depois de termos os perfis de dados estabelecidos, a análise se torna bastante direta. Basta acessar a tabela específica e navegar até a aba de perfil de dados para obter insights detalhados sobre a distribuição, qualidade e outras métricas relevantes dos dados.
 
 ![visu_perfil_dados_bigquery](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/06689ee3-a747-4ffc-be61-a16178ecb0f2)
 
 # 5- Análises e gráficos:
 
-Agora que temos nossas tabelas carregas no BigQuery, chegou a hora de realizar as consultas que tentarão responder as perguntas levantadas no inicio do relatório e cumprir o nosso objetivo definido.
+Com nossas tabelas carregadas no BigQuery, chegou a hora de realizar as consultas que tentarão responder as perguntas levantadas no inicio do relatório e cumprir o nosso objetivo definido.
 
 Todo o roteiro de análise e geração de gráficos foi relizado no Google Collab. Depois de criar as queries e executa-lás no BigQuery, elas foram salvas e exportadas individualmente para um notebook no Google Collab.
 
-A imagem abaixo mostra as queries que foram salvas no BigQuery, assim como o roteiro necessário para exportá-la para o google collab. 
+A imagem abaixo mostra as queries que foram salvas no BigQuery, assim como o roteiro necessário para exportá-la para o Google Collab. 
 
 ![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/1315de89-33b4-4710-a951-007bc29e1d86)
 
-Para verificar toda a seção de análises e geração de gráficos, bem como as respostas das perguntas levantas e a conclusão sobre o cumprimento do objetivo, consulte o notebook exportado para o GitHub clicando no nome da seção [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb).
+Para verificar toda a seção de análises e geração de gráficos, bem como as respostas das perguntas levantadas, bem como a conclusão sobre o cumprimento do objetivo, consulte o notebook exportado para o GitHub clicando no nome da seção [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb).
 
 ## 5.1- [Notebook do Google Collab para análises](5_1_analises_e_graficos.ipynb)
 
