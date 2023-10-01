@@ -758,5 +758,25 @@ Subindo as tabelas fato para o BigQuery:
 
 ![tabelas_fato_shell](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/97cac9c0-d3bf-4045-84e9-ad661868997a)
 
+Por fim, todas as tabelas desejadas foram carregadas no BigQuery:
 
+![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/dc6928fb-ebf5-4763-b0f6-cb3d2d27cca7)
+
+## 4.5- Perfil e catalogação dos dados:
+
+A governança de dados é uma peça-chave para garantir a integridade, qualidade e utilidade dos dados no nosso projeto. Para isso, realizamos a catalogação e definição do perfil dos dados. Portanto, contamos com a eficiência da API do Google Dataplex.
+
+Começamos estabelecendo descrições claras e precisas para os dados de cada tabela, alinhadas às definições apresentadas na [seção 3 - Modelagem](#3--modelagem) deste relatório:
+
+![categor_descri_dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/ad9db986-4bc1-4d15-b662-2f59905cad5d)
+
+Em seguida, demos um passo adiante ao criar verificações de perfil no Dataplex. A imagem a seguir mostra o processo de criação para a tabela fato_desempenho, mas é importante destacar que implementamos uma verificação individual para cada tabela do tipo fato:
+
+![criar_perfil_dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/126cc99d-12fb-428a-bc19-135913aeda35)
+
+![perfis criados no dataplex](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/b45fb05f-daa9-44e8-821b-f771609594d8)
+
+Depois de ter os perfis de dados estabelecidos, a análise se torna bastante direta. Basta acessar a tabela específica e navegar até a aba de perfil de dados para obter insights detalhados sobre a distribuição, qualidade e outras métricas relevantes dos dados.
+
+![visu_perfil_dados_bigquery](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/06689ee3-a747-4ffc-be61-a16178ecb0f2)
 
