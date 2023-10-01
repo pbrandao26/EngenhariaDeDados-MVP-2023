@@ -816,7 +816,7 @@ Optei por realizar a etapa de ELT por meio da API do Google Cloud DataFusion. No
 
 ## 6.2- Tentativa 2 - AWS:
 
-Diante das dificuldades enfrentadas na GCP, decidi migrar o projeto para a AWS. No entanto, na nova plataforma, também enfrentei obstáculos, em particular, não consegui avançar na etapa de ETL usando o AWS Glue devido a problemas de permissões.
+Diante das dificuldades enfrentadas na GCP, decidi migrar o projeto para a AWS. No entanto, na nova plataforma, também enfrentei obstáculos. Em particular, não consegui avançar na etapa de ETL usando o AWS Glue devido a problemas de permissões.
 
 O processo de execução do projeto na AWS seguiu a mesma estrutura idealizada para a GCP: criação do projeto, configuração do bucket, instalação do banco de dados e, por fim, o ETL.
 
