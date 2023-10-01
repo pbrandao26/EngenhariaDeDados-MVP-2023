@@ -790,6 +790,6 @@ A imagem abaixo mostra as queries que foram salvas no BigQuery, assim como o rot
 
 ![image](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/1315de89-33b4-4710-a951-007bc29e1d86)
 
-Para verificar toda a seção de análises e geração de gráficos, bem como as respostas das perguntas levantas e a conclusão sobre o cumprimento do objetivo, consulte o notebook exportado para o GitHub clicando no nome da seção [Análises_e_Gráficos](5_1-analises-e-graficos.ipynb).
+Para verificar toda a seção de análises e geração de gráficos, bem como as respostas das perguntas levantas e a conclusão sobre o cumprimento do objetivo, consulte o notebook exportado para o GitHub clicando no nome da seção [Análises_e_Gráficos](5_1_analises_e_graficos.ipynb).
 
-## 5.1- [Análises_e_Gráficos](5_1-analises-e-graficos.ipynb)
+## 5.1- [Análises_e_Gráficos](5_1_analises_e_graficos.ipynb)
