@@ -744,7 +744,7 @@ Depois de cruzar os dados, algumas transformações e cálculos adicionais são 
 
 Uma vez que todos os dados são preparados e as transformações aplicadas, procedemos com a configuração para carregar os dados no BigQuery. Definimos um esquema para a tabela fato_desempenho, garantindo que cada coluna do DataFrame seja mapeada corretamente para seu tipo correspondente no BigQuery. Com tudo configurado, carregamos o DataFrame no BigQuery e concluímos o processo.
 
-# 4.4.6- Executando os scripts:
+### 4.4.6- Executando os scripts:
 
 Depois de definir todos os esquemas e relações, realizando todo tratamento adequado para cada tebela, foi necessário executar os scirpts para realizar a carga no BigQuery. Para isso, bastou especificar no terminal onde os arquivos estavam e referenciar o nome deles com 'python' antes do nome do arquivo. 
 
