@@ -1,12 +1,15 @@
-# EngenhariaDeDados-MVP-2023
-Repositório destinado aos meus arquivos do MVP de Engenharia de Dados, da pós de Data Science &amp; Analyticis pela PUC-Rio. 
+# 1- Introdução
 
-# 1 - Objetivo e Perguntas
-Tema Central: A dinâmica do mercado de transferências das cinco principais ligas de futebol europeu: Premiere League, La Liga, Serie A TIM, Ligue 1 e Bunesliga.
+O presente trabalho é um MVP que tem como tema central o mercado de transferência das cinco principais ligas de futebol europeu: Premier League (Inglaterra), La Liga (Espanha), Serie A TIM (Itália), Ligue 1 (França) e Bundesliga (Alemanha).
 
-Objetivo: Explorar e analisar a relação entre diversas características dos jogadores e dos jogos (tais como idade, liga, temporada, gols, assistências, entre outros) com os valores de transferência associados a cada jogador. Ao longo do projeto, embora tenhamos começado com algumas perguntas-chave, novos questionamentos e insights surgiram..
+O desafio principal do projeto era criar um pipeline de dados utilizando tecnologia em nuvem, passando pelas etapas de busca, coleta, modelagem, carga e análise dos dados. 
 
-Perguntas Iniciais:
+Todos os requisitos e objetivos propostos foram cumpridos e serão exibidos e explicados passo a passo neste documento. 
+
+## Objetivo e Perguntas
+O objetivo do trabalho foi explorar e analisar a relação entre diversas características dos jogadores e dos jogos (tais como idade, liga, temporada, gols, assistências, entre outros) com os valores de transferência associados a cada jogador. Ao longo do projeto, embora tenhamos começado com algumas perguntas-chave, novos questionamentos e insights surgiram.
+
+**Perguntas Iniciais**:
 
 1- Impacto da Idade: De que forma a idade dos jogadores influencia seus valores de transferência?
 
@@ -18,24 +21,33 @@ Perguntas Iniciais:
 
 5- Tendências Temporais: Existem tendências notáveis no mercado de transferências ao longo do tempo? Por exemplo, há um aumento nos valores durante eventos como a Copa do Mundo?
 
-# 2 - Detalhamento e coleta:
-O trabalho utiliza duas bases de dados principais:
+# 2- Busca e coleta:
 
-1- Base de dados do mercado de transferências ([www.transfermkt.com](https://www.transfermarkt.com.br/)): 
+A fim de atender o objetivo do trabalho e responder às perguntas levantadas, foi necessário buscar bases de dados consistentes e confiáveis que tratassem do assunto. Assim, o trabalho utilizou duas bases de dados principais:
 
-No site transfermkt coletamos os dados de todas as transferêncas (entradas e saídas) de todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Através dessa base de dados foi possível obter dados descritivos de fluxo de entrada e saída de jogadores das ligas e dos clubes, e também os valores de cada transferência.
+**1- Base de dados do mercado de transferências** ([www.transfermkt.com](https://www.transfermarkt.com.br/)): 
+
+Através do site transfermkt, coletamos os dados de todas as transferências (entradas e saídas) de todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Através dessa base de dados, foi possível obter dados descritivos de fluxo de entrada e saída de jogadores das ligas e dos clubes, e também os valores de cada transferência.
 
 ![transfermkt](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/1a84c6ab-e3a8-4245-8ff5-4c7054f19477)
 
-2- Base de dados de desempenho dos jogadores (https://fbref.com/pt/):
+O site transfermkt é uma fonte de dados conhecida mundialmente pela consistência dos dados relacionados ao mercado de transferência do futebol. Entretanto, ele não apresenta uma base de dados tão sólida quando o assunto é dados de performance. Sendo assim, buscamos uma segunda fonte de dados relevante.
 
-No site fbref coletamos todas as principais estatisticas de desempenho dos jogadores que passaram por todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Através dessa base de dados foi possível obter as métricas de desempenho e performance dos jogadores.
+**2- Base de dados de desempenho dos jogadores** (https://fbref.com/pt/):
+
+No site fbref, coletamos todas as principais estatísticas de desempenho dos jogadores que passaram por todos os clubes das 5 principais divisões europeias entre os anos de 1999 e 2023. Através dessa base de dados, foi possível obter as métricas de desempenho e performance dos jogadores.
 
 ![fbref](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/55ca18a4-c56b-4043-b105-243b1c36134e)
 
-- Coleta:
+## Coleta dos dados:
 
-A coleta dos dados presentes nos sites expostos foi realizada através de um script de webscraping, usando majoritariamente as bibliotecas pandas, bs4 e selenium. Os dados foram armazenados em um arquivo .xslx e posteriormente convertido para .tsv, também através de um script em python. Os scripts se encontram na pasta WebScraping presente neste repositório.
+Como as bases de dados escolhidas não possuem APIs para obtenção automática, foi necessário criar um robô de scraping para realizar a raspagem de dados das webpages. Foram construídos dois scripts de Python, um para cada base de dados, usando majoritariamente as bibliotecas pandas, bs4 e selenium, para se obter os dados em formato tabular.
+
+Os scripts foram construídos em um ambiente local, na minha própria máquina, e encontram-se disponíveis no diretório [WebScraping](/EngenhariaDeDados-MVP-2023/WebScraping) aqui neste repositório.
+
+Os dados foram armazenados em um arquivo .xslx e posteriormente convertidos para .tsv, também através de um script em Python que se encontra no mesmo diretório dos outros dois mencionados.
+
+Os scripts também fazem alguns tratamentos preliminares que serviram como pré-processamento dos dados antes de jogá-los para a nuvem. Porém, como o intuito era realizar as transformações durante a etapa de ETL, dentro do ambiente de nuvem, essas transformações foram as mais básicas possíveis, como por exemplo: remoção de cabeçalhos repetidos, remoção de colunas multiníveis, formatação de valores monetários, entre outros.
 
 # 3 - Modelagem:
 A modelagem escolhida para solucionar o problema em questão e responder às perguntas foi a modelagem estrela. Busquei criar uma estrutura com 3 tabelas de dimensão, sendo elas: dimensão jogador, dimensão liga/ano e dimensão time, e duas tabelas fato, tabela fato transferencias e tabela fato desempenho. 
