@@ -780,3 +780,8 @@ Depois de ter os perfis de dados estabelecidos, a análise se torna bastante dir
 
 ![visu_perfil_dados_bigquery](https://github.com/pbrandao26/EngenhariaDeDados-MVP-2023/assets/145406479/06689ee3-a747-4ffc-be61-a16178ecb0f2)
 
+# 5- Análises e gráficos:
+
+Agora que temos nossas tabelas carregas no BigQuery, chegou a hora de realizar as consultas que tentarão responder as perguntas levantadas no inicio do relatório e cumprir o nosso objetivo definido.
+
+Foram realizadas quatro consultas principais que levaram 
